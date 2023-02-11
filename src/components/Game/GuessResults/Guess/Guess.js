@@ -1,7 +1,8 @@
 import { range } from "../../../../utils";
+import { checkGuess } from "../../../../game-helpers";
 import React from "react";
 
-function Guess({ guess }) {
+function Guess({ guess, answer }) {
   if (guess.length === 0) {
     return (
       range(5).map((id) => (
@@ -9,10 +10,15 @@ function Guess({ guess }) {
       ))
     )
   }
+
+  const result = checkGuess(guess, answer);
+
   return (
     guess.split('').map(
-      (c, id) => (
-        <span key={id} className="cell">{c}</span>
+      (c, index) => (
+        <span key={index}
+          className={`cell ${result[index].status}`}
+        >{c}</span>
       )
     )
   )

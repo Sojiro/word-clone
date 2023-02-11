@@ -34,7 +34,7 @@ function Game() {
 
   return (
     <>
-      <GuessResults list={guessList} />
+      <GuessResults list={guessList} answer={answer}/>
       <GuessInput {...{ handleNewGuess }} />
     </>
   );
