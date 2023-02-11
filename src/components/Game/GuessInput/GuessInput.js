@@ -1,11 +1,11 @@
 import React from "react";
 
-function GuessInput({ handleNewGuess}) {
+function GuessInput({ handleNewGuess, isDisabled }) {
   const [guess, setGuess] = React.useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(guess.length !== 5){
+    if (guess.length !== 5) {
       window.alert('Guess should be a 5 letter word!');
       return;
     }
@@ -22,7 +22,8 @@ function GuessInput({ handleNewGuess}) {
         required
         onChange={e =>
           setGuess(e.target.value.toUpperCase())
-        } />
+        }
+        disabled={isDisabled} />
     </form>
   );
 }
